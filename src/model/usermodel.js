@@ -15,4 +15,18 @@ usermodel.addUser = async (newUser) => {
     }
 }
 
+usermodel.getUserByUsername = async (username) => {
+    let userModel = await userCollection.getUserModel();
+    let data = await userModel.find({username: username});
+    
+    return data;
+}
+
+usermodel.getUserByEmail = async (email) => {
+    let userModel = await userCollection.getUserModel();
+    let data = await userModel.find({email: email});
+
+    return data;
+}
+
 module.exports = usermodel;
