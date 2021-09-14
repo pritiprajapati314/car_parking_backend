@@ -5,7 +5,7 @@ let usermodel = {}
 usermodel.addUser = async (newUser) => {
     let userModel = await userCollection.getUserModel();
     let insertedData = await userModel.create(newUser);
-
+    
     if(insertedData){
         return insertedData;
     }else{
