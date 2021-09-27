@@ -4,11 +4,6 @@ let user = {
         required: true,
         unique: true
     },
-    "username": {
-        type: String,
-        required: true,
-        unique: true
-    },
     "password":{
         type: String,
         required: true
@@ -25,11 +20,26 @@ let user = {
         unique: true
     },
     "dateOfBirth": {
-        type: Date,
-        required: true,
+        type: Date
     },
     "gender":{
         type: String,
+        required: true
+    },
+    "vehicle":{
+        type: String
+    },
+    "contact" : {
+        type: String,
+        required: true
+    },
+    "address" : {
+        type: String,
+        required: true
+    },
+    "pin" : {
+        type: String,
+        required: true
     }
 }
 

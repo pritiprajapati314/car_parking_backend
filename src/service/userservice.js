@@ -11,9 +11,11 @@ let userservice = {}
 userservice.registerUser = async (newUser) => {
     validation.validateNewUser(newUser);
     newUser.password = await bcrypt.hash(newUser.password, 10);
-    
 
-    return await usermodel.addUser(newUser);
+    console.log(newUser);
+    newUser = await usermodel.addUser(newUser);
+    console.log(newUser);
+    return newUser
 }
 
 userservice.verifyCredentials = async (email, password) =>{
@@ -47,12 +49,15 @@ userservice.verifyCredentials = async (email, password) =>{
 
 userservice.getUserBy = async (type, value) => {
     if(type === "userId"){
-
+        data = await usermodel.getUserByUserId(value);
+        return data
     }
-    if(type === "username"){
+    else if(type === "username"){
         data = await usermodel.getUserByUsername(value);
+        return data
     }else if(type == "email"){
         data = await usermodel.getUserByEmail(value);
+        return data
     }
 
     return data;

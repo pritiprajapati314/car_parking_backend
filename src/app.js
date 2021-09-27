@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const requestLogger = require('./utility/requestlogger');
 const userRouter = require('./router/userrouter');
 const errorLogger = require('./utility/errorlogger');
+const cors = require('cors');
 
 const PORT_NUM = 3000;
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
