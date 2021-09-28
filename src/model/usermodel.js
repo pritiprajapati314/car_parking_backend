@@ -1,7 +1,15 @@
 let userCollection = require('../utility/dbconection');
 
+
+//Priti : below object will define carry all the function that to be used in the by the service along with 
+//the logic at the time of execution 
 let usermodel = {}
 
+
+//Priti : the function get the data for the service (i.e, which is send by frontend) and it does
+//the operations over these data with the connection function 
+//already defined in the dbconnection file 
+//here userCollection gets connection required to proceed 
 usermodel.addUser = async (newUser) => {
     let userModel = await userCollection.getUserModel();
     

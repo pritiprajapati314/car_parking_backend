@@ -5,19 +5,28 @@ const jwt = require('jsonwebtoken');
 let config = require('../utility/config');
 
 
+//Priti : here the actual functionality (visible to the user) is defined using the model we declared
 let userservice = {}
 
 
+//Priti: register
+//hashes the password
+//then send the new object (user) to get stored in the database
+//and gets back the data it has stored in the database 
 userservice.registerUser = async (newUser) => {
     validation.validateNewUser(newUser);
     newUser.password = await bcrypt.hash(newUser.password, 10);
 
-    console.log(newUser);
     newUser = await usermodel.addUser(newUser);
     console.log(newUser);
     return newUser
 }
 
+
+//Priti: here when user logins it will go through this
+//verification stage where it check the password of the following email id and
+//sends the token 
+//@@@@@@Have to make another function to to verify token every time a servies is being requested
 userservice.verifyCredentials = async (email, password) =>{
     let user = await usermodel.getUserByEmail(email);
     console.log(password);
@@ -47,6 +56,9 @@ userservice.verifyCredentials = async (email, password) =>{
     }
 }
 
+
+//Priti : this function gets the the user by different attributes 
+//userID, username, email
 userservice.getUserBy = async (type, value) => {
     if(type === "userId"){
         data = await usermodel.getUserByUserId(value);
