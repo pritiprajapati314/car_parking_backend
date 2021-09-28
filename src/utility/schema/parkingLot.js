@@ -1,5 +1,5 @@
 let parkingLot = {
-    "pardingLotId" : {
+    "parkingLotId" : {
         type : Number,
         unique : true,
         required : true
