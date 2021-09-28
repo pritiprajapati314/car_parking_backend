@@ -14,16 +14,10 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-<<<<<<< HEAD
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8"
-=======
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.6"
->>>>>>> 1fabb8e3a9a6e2fb0d4383dcce824df75b0d31e9
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
