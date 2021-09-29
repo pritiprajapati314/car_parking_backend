@@ -1,3 +1,5 @@
+//Priti : defining the final for the collection user
+
 let user = {
     "userId": {
         type: Number,
