@@ -1,7 +1,7 @@
 let vehicleCollection = require('../utility/dbconection');
 
 let vehicleMod = {};
-
+//what if user has two or more vehicles 
 vehicleMod.addVehicle = async (newVehicle) => {
     let collection = await vehicleCollection.getVehicleModel();
     let insertVehicle = await collection.create(newVehicle);

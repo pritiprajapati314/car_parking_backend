@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const requestLogger = require('./src/utility/requestlogger');
 const userRouter = require('./src/router/userrouter');
 const locationrouter = require('./src/router/location')
+const vehiclerouter = require('./src/router/uservehicle');
 const errorLogger = require('./src/utility/errorlogger')
 
 const PORT_NUM = 4000;
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(requestLogger);
 app.use('/user', userRouter);
 app.use('/api/userpage/location',locationrouter);
+app.use('/uservehicle',vehiclerouter);
 app.use(errorLogger);
 app.use(cors());
 
