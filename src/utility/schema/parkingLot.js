@@ -7,6 +7,18 @@ let parkingLot = {
     "OwnerId" : {
         type : Number,
         required : true
+    },
+    "NumberOFSlot" : {
+        type : Number,
+        required : true
+    },
+    "revenue" : {
+        type : Number,
+        required : true
+    },
+    "AddressID" : {
+        type : String,
+        required : true
     }
     //should i keep fees here or in parking slot
 }
