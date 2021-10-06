@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use(requestLogger);
 app.use('/user', userRouter);
-
+//app.use('/manager')
 app.use(errorLogger);
 
 app.listen(PORT_NUM);
