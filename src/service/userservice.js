@@ -29,8 +29,6 @@ userservice.registerUser = async (newUser) => {
 //@@@@@@Have to make another function to to verify token every time a servies is being requested
 userservice.verifyCredentials = async (email, password) =>{
     let user = await usermodel.getUserByEmail(email);
-    console.log(password);
-    console.log(user);
     //encrpytpass = await bcrypt.hash(password, 10)
     if(user.length === 1){
 

@@ -13,7 +13,7 @@ const user = require('../utility/schema/user');
 
 
 userrouter.post('/login', async (req, res, next) => {
-    console.log("Here")
+    
     const {email, password} = req.body;
     
     let token = await userservice.verifyCredentials(email, password);
@@ -25,20 +25,20 @@ userrouter.post('/login', async (req, res, next) => {
 userrouter.post('/register', async (req, res, next)=>{
     try{
         let newuser = new User(req.body);
-        console.log(newuser);
-
-        newuser.userId = 778;
+        
         let idStatus = await userservice.getUserBy("userId", newuser.userId);
         let emailStatus = await userservice.getUserBy("email", newuser.email);
-        console.log("what's wrong");
+    
         if(idStatus.length != 0)throw("user id already exists")
         if(emailStatus.length != 0)throw("Email id already exists")
        
         if(!newuser.gender)throw("please enter your gender")
-        if(newuser.password != req.body.cPassword)throw("confirm password should be same as password")
-        console.log("choke")
+
+        if(newuser.password != newuser.cpassword)throw("confirm password should be same as password")
+        
         newuser = await userservice.registerUser(newuser);
-        console.log("retured value", newuser)
+        res.json("Registration Successfull");
+    
     }catch(err){
         res.json({message: err})
     }

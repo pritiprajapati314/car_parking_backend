@@ -4,11 +4,11 @@ let parkingLot = {
         unique : true,
         required : true
     },
-    "OwnerId" : {
+    "ownerId" : {
         type : Number,
         required : true
     },
-    "NumberOFSlot" : {
+    "numberOFSlot" : {
         type : Number,
         required : true
     },
@@ -16,7 +16,7 @@ let parkingLot = {
         type : Number,
         required : true
     },
-    "AddressID" : {
+    "addressID" : {
         type : String,
         required : true
     }

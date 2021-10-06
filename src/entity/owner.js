@@ -1,10 +1,9 @@
-class User{
+class Owner{
     constructor (body){
-        this.userId = body.userId;
-        this.vehicle = body.vehicle;
+        this.ownerId = body.ownerId;
+        this.numberOfSlot = body.numberOfSlot;
         this.email = body.email;
         this.password = body.password;
-        this.cpassword = body.cPassword;
         this.firstName = body.firstName;
         this.lastName = body.lastName;
         this.dateOfBirth = body.dateOfBirth;
@@ -12,7 +11,8 @@ class User{
         this.contact = body.contact;
         this.address = body.address;
         this.pin = body.pin;
+        this.revenue = body.revenue;
     }
 }
 
-module.exports = User;
+module.exports = Owner;
