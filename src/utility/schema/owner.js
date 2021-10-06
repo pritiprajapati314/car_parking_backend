@@ -24,10 +24,6 @@ let owner = {
         type : String, 
         required : true
     }, 
-    "addressID" : {
-        type : String, 
-        required : true
-    },
     "city" : {
         type : String, 
         required : true
