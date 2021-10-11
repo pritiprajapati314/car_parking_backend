@@ -4,6 +4,11 @@ let vehicle = {
         required: true,
         unique: true
     },
+    "vehicleNumber" : {
+        type : String,
+        required : true,
+        unique : true
+    },
     "userId": {
         type : Number,
         required : true

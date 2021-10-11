@@ -18,7 +18,6 @@ userservice.registerUser = async (newUser) => {
     newUser.password = await bcrypt.hash(newUser.password, 10);
 
     newUser = await usermodel.addUser(newUser);
-    console.log(newUser);
     return newUser
 }
 

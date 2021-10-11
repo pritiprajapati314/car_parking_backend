@@ -3,9 +3,9 @@ let parkSlotCollection = require('../utility/dbconection');
 let parkSlotModel = {}
 
 parkSlotModel.addSlot = async (newSlot) => {
-    let connection = parkSlotCollection.getPSlotModel();
     
-    let insertedSlot = await connection.create();
+    let connection = await parkSlotCollection.getPSlotModel();
+    let insertedSlot = await connection.create(newSlot);
     if(insertedSlot){
         return insertedSlot;
     }

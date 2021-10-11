@@ -3,20 +3,30 @@ let ownerCollection = require('../utility/dbconection');
 
 let ownermodel = {}
 
-ownermodel.addowner = async (newowner) => {
-    //console.log("what's up people, how yo'll rotine")
-    let connection = await ownerCollection.getOwnerModel();
-    //console.log("how to get this thing workin", connection, newowner);
-    console.log(newowner);
-    let insertedData = await connection.create(newowner);
-    console.log(insertedData)
+ownermodel.addowner = async (newOwner) => {
+    let ownerModel = await ownerCollection.getOwnerModel();
+
+    
+    newOwner.ownerId = await ownermodel.generateId();
+    
+    let insertedData = await ownerModel.create(newOwner);
     if(insertedData){
         return insertedData;
     }else{
-        let err = new Error("Error occured in adding owner");
+        let err = new Error("Error occured in adding user");
         err.status = 500;
         throw err;
     }
+}
+
+ownermodel.generateId = async() => {
+
+    let ownerModel = await ownerCollection.getOwnerModel();
+    let ids = await ownerModel.distinct("ownerId");
+    let uId = Math.max(...ids);
+    if(uId == -Infinity)return 1;
+    console.log(uId);
+    return uId + 1;  
 }
 
 ownermodel.getownerByownername = async (ownername) => {

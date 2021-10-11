@@ -1,26 +1,22 @@
 let parkingSlot = {
     "slotId" : {
-        type : Number,
+        type : String,
         Unique : true,
         Required : true
     },
-    "ParkingLotId" : {
-        type : Number,
-        Required : true
-    },
-    "OwnerID" : {
-        type : Number,
-        Required : true,
-    },
-    "Status" : {
-        type : Boolean,
-        Required : true
-    },
-    "reserveType" : {
+    "parkingLotId" : {
         type : String,
         Required : true
     },
-    "Fees" : {
+    "ownerId" : {
+        type : Number,
+        Required : true,
+    },
+    "status" : {
+        type : Boolean,
+        Required : true
+    },
+    "fees" : {
         type : Number,
         Required : true
     }

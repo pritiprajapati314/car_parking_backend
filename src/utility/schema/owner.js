@@ -1,9 +1,10 @@
 let owner = {
     "ownerId" : {
         type : String,
+        unique : true,
         required : true
     },
-    "firstName " : {
+    "firstName" : {
         type : String, 
         required : true
     },

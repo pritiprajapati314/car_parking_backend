@@ -12,9 +12,8 @@ let usermodel = {}
 //here userCollection gets connection required to proceed 
 usermodel.addUser = async (newUser) => {
     let userModel = await userCollection.getUserModel();
-    
+    newUser.userId = await usermodel.generateUserId();
     let insertedData = await userModel.create(newUser);
-    console.log(insertedData)
     if(insertedData){
         return insertedData;
     }else{
@@ -22,6 +21,13 @@ usermodel.addUser = async (newUser) => {
         err.status = 500;
         throw err;
     }
+}
+
+usermodel.generateUserId = async() => {
+    let userModel = await userCollection.getUserModel();
+    let ids = await userModel.distinct("userId");
+    let uId = Math.max(...ids);
+    return uId + 1;  
 }
 
 usermodel.getUserByUsername = async (username) => {
