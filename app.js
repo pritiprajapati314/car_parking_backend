@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const requestLogger = require('./src/utility/requestlogger');
 const userRouter = require('./src/router/userrouter');
 const adminRouter = require('./src/router/adminrouter');
+let managerRequestRouter = require('./src/router/managerRequestrouter');
 const errorLogger = require('./src/utility/errorlogger');
 const cors = require('cors');
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(requestLogger);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
+app.use('/managerRequest',managerRequestRouter)
 app.use(errorLogger);
 
 app.listen(PORT_NUM);

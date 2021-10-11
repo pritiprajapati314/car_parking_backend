@@ -16,8 +16,11 @@ userrouter.post('/login', async (req, res, next) => {
     
     const {email, password} = req.body;
     
+    let user = await userservice.getUserBy("email", email);
     let token = await userservice.verifyCredentials(email, password);
-    res.json({token: token});
+    
+    console.log(user);
+    res.json({user: user, token: token});
 });
 
 
@@ -29,13 +32,12 @@ userrouter.post('/register', async (req, res, next)=>{
         let idStatus = await userservice.getUserBy("userId", newuser.userId);
         let emailStatus = await userservice.getUserBy("email", newuser.email);
     
-        if(idStatus.length != 0)throw("user id already exists")
+        //if(idStatus.length != 0)throw("user id already exists")
         if(emailStatus.length != 0)throw("Email id already exists")
        
         if(!newuser.gender)throw("please enter your gender")
 
         if(newuser.password != newuser.cpassword)throw("confirm password should be same as password")
-        
         newuser = await userservice.registerUser(newuser);
         res.json("Registration Successfull");
     
@@ -44,6 +46,21 @@ userrouter.post('/register', async (req, res, next)=>{
     }
 });
 
+userrouter.get('/profile/:email', loginutil.verifyToken, async(req, res, next) => {
+    try{
+        let email = req.params.email;
+        let user = await userservice.getUserBy("email", email);
+        if(user){
+            res.json({user: user});
+        }
+        else {
+            res.json({notFound: 'user not found'});
+        }
+    }
+    catch(err){
+        next(err);
+    }
+});
 
 userrouter.get('/get-user/:username', loginutil.verifyToken, async(req, res, next) =>{
     try{

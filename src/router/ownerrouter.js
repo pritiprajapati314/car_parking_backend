@@ -5,17 +5,6 @@ const ownerservice = require('../service/userservice');
 const loginutil = require('../utility/loginutil');
 
 
-
-// ownerrouter.post('/login', async (req, res, next) => {
-//     console.log("Here")
-//     const {, password} = req.body;
-    
-//     let token = await userservice.verifyCredentials(email, password);
-//     res.json({token: token});
-// });
-
-
-
 userrouter.post('/register', async (req, res, next)=>{
     try{
         let newuser = new User(req.body);

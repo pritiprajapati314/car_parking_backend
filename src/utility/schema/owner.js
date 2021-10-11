@@ -1,9 +1,10 @@
 let owner = {
     "ownerId" : {
         type : String,
+        unique : true,
         required : true
     },
-    "firstName " : {
+    "firstName" : {
         type : String, 
         required : true
     },
@@ -15,11 +16,6 @@ let owner = {
         type : Date,
         required : true
     }, 
-    "contact":
-    {
-        type:Number,
-        required:true
-    },
     "address" : {
         type : String, 
         required : true

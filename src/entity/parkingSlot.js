@@ -1,10 +1,10 @@
 class ParkingSlot{
     constructor (body){
-        this.slotId = body.userId;
-        this.parkingLotId = body.vehicle;
-        this.ownerID = body.email;
-        this.status = body.password;
-        this.fees = body.firstName;
+        this.slotId = body.parkingLotId;
+        this.parkingLotId = body.parkingLotId;
+        this.ownerId = body.ownerId;
+        this.status = body.status;
+        this.fees = body.revenue;
     }
 }
 

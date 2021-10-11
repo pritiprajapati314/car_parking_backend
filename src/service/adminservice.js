@@ -17,12 +17,11 @@ ownerservice.registerOwner = async (newowner) => {
     
     validation.validateNewUser(newowner);
     newowner.password = await bcrypt.hash(newowner.password, 10);
-
-    //ownerID 
+    console.log("what happend now");
     newowner = await ownermodel.addowner(newowner);
-    console.log(newowner);
     return newowner
 }
+
 
 
 //Priti: here when owner logins it will go through this
