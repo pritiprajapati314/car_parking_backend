@@ -20,6 +20,10 @@ parkLotModel.addParkLot = async (newParkLot) => {
 };
 
 parkLotModel.getParkLotById = async (parkLotId) => {
+    let parkLotModel = await ownerCollection.getPLotModel();
+    let data = await ownerModel.find({ownername: ownername});
+    return data;
+
 
 };
 

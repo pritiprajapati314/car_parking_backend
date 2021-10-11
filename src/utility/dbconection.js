@@ -10,7 +10,7 @@ const vehicle = require('./schema/vehicle');
 const parkingLot = require('./schema/parkingLot');
 const parkingSlot = require('./schema/parkingSlot');
 const slotTiming = require('./schema/slotTiming');
-
+const managerRequest = require('./schema/ManagerRequest')
 //Priti : we have to declare a schema in the format of mongoose
 const schema = mongoose.Schema;
 
@@ -25,7 +25,7 @@ let vehicleschema = new schema(vehicle, {collection: "CAR_PARKING_VEH", timestam
 let parkLotschema = new schema(parkingLot, {collection: "CAR_PARKING_PL", timestamps: true});
 let parkSlotschema = new schema(parkingSlot, {collection: "CAR_PARKING_PS", timestamps: true});
 let slotTimeschema = new schema(slotTiming, {collection: "CAR_PARKING_ST", timestamps: true});
-
+let managerRequestschema = new schema(managerRequest,{collection:"CAR_PARKING_MR",timestamps: true})
 //Priti : this object contains all the function that is going to be later used in the 'model' 
 //to insert, update, find and other operations
 let connection = {}
@@ -82,5 +82,13 @@ connection.getSTimeModel = async() => {
         throw err;
     }
 }
+connection.getManagerRequestModel = async() => {
+    try{
+        return (await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})).model("CAR_PARKING_MR",managerRequestschema);
+    }catch(err){
+        throw err;
+    }
+}
+
 
 module.exports = connection;
