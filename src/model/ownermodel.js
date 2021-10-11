@@ -4,10 +4,11 @@ let ownerCollection = require('../utility/dbconection');
 let ownermodel = {}
 
 ownermodel.addowner = async (newowner) => {
-    //console.log("what's up people, how yo'll rotine")
+    console.log("what's up people, how yo'll rotine")
     let connection = await ownerCollection.getOwnerModel();
-    //console.log("how to get this thing workin", connection, newowner);
+    console.log("how to get this thing workin", connection, newowner);
     console.log(newowner);
+    // console.log(mongoose.connection.readyState)
     let insertedData = await connection.create(newowner);
     console.log(insertedData)
     if(insertedData){
