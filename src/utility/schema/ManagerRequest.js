@@ -61,14 +61,7 @@ let ManagerRequest = {
         type:Number,
         required:true
 
-    },
-    // "gender":{
-    //     type: String,
-        
-    // }
-    
-   
-    
+    }
 }
 
 module.exports = ManagerRequest;

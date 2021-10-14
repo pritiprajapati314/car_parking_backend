@@ -3,6 +3,7 @@ const usermodel = require('../model/usermodel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 let config = require('../utility/config');
+const user = require('../utility/schema/user');
 
 
 //Priti : here the actual functionality (visible to the user) is defined using the model we declared
@@ -16,7 +17,6 @@ let userservice = {}
 userservice.registerUser = async (newUser) => {
     validation.validateNewUser(newUser);
     newUser.password = await bcrypt.hash(newUser.password, 10);
-
     newUser = await usermodel.addUser(newUser);
     return newUser
 }
@@ -71,6 +71,16 @@ userservice.getUserBy = async (type, value) => {
 
     return data;
 
+}
+
+
+userservice.updateUser = async (value) => {
+    
+    let updatedUser = await usermodel.updateUser(value);
+    if(updatedUser){
+        return updatedUser;
+    } 
+    else return Error;
 }
 
 

@@ -1,13 +1,13 @@
 let vehicle = {
     "vehicleId" : {
-        type : Number,
+        type : String,
         required: true,
-        unique: true
+        //unique: true
     },
     "vehicleNumber" : {
         type : String,
         required : true,
-        unique : true
+        //unique : true
     },
     "userId": {
         type : Number,

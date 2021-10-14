@@ -1,4 +1,3 @@
-
 class ParkingLot{
     constructor (body){
         this.parkingLotId = body.parkingLotId;
