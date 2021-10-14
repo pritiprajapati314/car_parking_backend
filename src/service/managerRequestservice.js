@@ -1,3 +1,5 @@
+
+
 const managerRequestmodel = require('../model/ManagerRequestmodel');
 const managerRequest = require('../utility/schema/ManagerRequest');
 
@@ -10,7 +12,12 @@ managerRequestService.addManagerRequest=async(newRequest)=>{
     return newRequest
 }
     
+managerRequestService.getManagerRequest=async()=>{
     
+    let newRequest = await  managerRequestmodel.getRequests();
+    console.log(newRequest);
+    return newRequest
+} 
 
 
 module.exports = managerRequestService;

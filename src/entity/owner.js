@@ -1,4 +1,4 @@
-class User{
+class Owner{
     constructor (body){
         this.userId = body.userId;
         this.vehicle = body.vehicle;
@@ -14,4 +14,4 @@ class User{
     }
 }
 
-module.exports = User;
+module.exports = Owner;
