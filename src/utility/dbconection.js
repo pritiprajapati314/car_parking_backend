@@ -16,8 +16,7 @@ const schema = mongoose.Schema;
 
 //Priti : connection with database getting and getting the url for the database after connection
 //this will happend once for each time any service has been requested
-const URL = 'mongodb://localhost:27017/CarParkingDB';
-
+const URL = 'mongodb://localhost:27017/ParkingLotDB';
 //Priti : defining the attribute using the schema, collection for each database-collections
 let userschema = new schema(user, {collection: "CAR_PARKING_USER", timestamps: true});
 let ownerschema = new schema(owner, {collection: "CAR_PARKING_OWNER", timestamps: true});
@@ -90,5 +89,5 @@ connection.getManagerRequestModel = async() => {
     }
 }
 
-
+module.exports =  managerRequestschema;
 module.exports = connection;

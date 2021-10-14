@@ -18,7 +18,12 @@ ManagerRequestmodel.addRequest = async (newRequest) => {
         throw err;
     }
 }
-
+ManagerRequestmodel.getRequests= async () => {
+    console.log("hi");
+    let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestmodel();
+    let data = await ManagerRequestmodel.find({});
+    return data;
+}
 
 
 module.exports = ManagerRequestmodel;
