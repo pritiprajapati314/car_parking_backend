@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(requestLogger);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
-app.use('/managerRequest',managerRequestRouter)
+app.use('/managerRequest',managerRequestRouter);
 app.use(errorLogger);
 
 app.listen(PORT_NUM);

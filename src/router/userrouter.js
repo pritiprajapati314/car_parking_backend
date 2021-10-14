@@ -1,23 +1,24 @@
 const express = require('express');
-let User = require('../entity/user');
 const userrouter = express.Router();
+
+let User = require('../entity/user');
+let Vehicle = require('../entity/vehicle');
+
 const userservice = require('../service/userservice');
+const vehicleservice = require('../service/vehicleService');
+
 const loginutil = require('../utility/loginutil');
-/* const { password, username } = require('../utility/schema/user');
-const user = require('../utility/schema/user');
- */
- 
-//Priti : here the router for user is defined
-//here all the displayed features is being defined using services function defined in services file
-//login, register, get user
 
 
 userrouter.post('/login', async (req, res, next) => {
     
     const {email, password} = req.body;
     
+    let user = await userservice.getUserBy("email", email);
     let token = await userservice.verifyCredentials(email, password);
-    res.json({token: token});
+    
+    console.log(user);
+    res.json({user: user[0], token: token});
 });
 
 
@@ -25,18 +26,13 @@ userrouter.post('/login', async (req, res, next) => {
 userrouter.post('/register', async (req, res, next)=>{
     try{
         let newuser = new User(req.body);
-        
-        let idStatus = await userservice.getUserBy("userId", newuser.userId);
-        let emailStatus = await userservice.getUserBy("email", newuser.email);
-    
-        if(idStatus.length != 0)throw("user id already exists")
-        if(emailStatus.length != 0)throw("Email id already exists")
-       
-        if(!newuser.gender)throw("please enter your gender")
+        let newvehicle = new Vehicle(req.body);
 
-        if(newuser.password != newuser.cpassword)throw("confirm password should be same as password")
-        
         newuser = await userservice.registerUser(newuser);
+
+        newvehicle.userId = newuser.userId;
+        newvehicle = vehicleservice.registerVehicle(newvehicle);
+        
         res.json("Registration Successfull");
     
     }catch(err){
@@ -44,6 +40,25 @@ userrouter.post('/register', async (req, res, next)=>{
     }
 });
 
+
+
+userrouter.post('/profile/update', loginutil.verifyToken, async(req, res, next) => {
+
+    try{
+        let updateduser = new User(req.body);
+       
+        updateduser = await userservice.updateUser(updateduser);
+        if(updateduser){
+            res.json({user: updateduser});
+        }
+        else {
+            res.json({notFound: 'user not found'});
+        }
+    }
+    catch(err){
+        next(err);
+    }
+});
 
 userrouter.get('/get-user/:username', loginutil.verifyToken, async(req, res, next) =>{
     try{
@@ -60,5 +75,23 @@ userrouter.get('/get-user/:username', loginutil.verifyToken, async(req, res, nex
         next(err);
     }
 });
+
+userrouter.post('/bookSlot', async(req, res, next) => {
+    try{
+        let R = 6371 // km
+        let lat1 = 21.8306151
+        let lon1 = 80.1870315
+        let lat2 = req.body.latitude;
+        let lon2 = req.body.longitude;
+        let p = Math.PI/180
+        let a = 0.5 - Math.cos((lat2-lat1)*p)/2 + Math.cos(lat1*p) * Math.cos(lat2*p) * (1-Math.cos((lon2-lon1)*p))/2;
+        let dis = 12742 * Math.asin(Math.sqrt(a));
+        console.log(dis);
+    }
+    catch(err){
+        next(err);
+    }
+})
+
 
 module.exports = userrouter;

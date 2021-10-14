@@ -1,10 +1,14 @@
 let vehicleCollection = require('../utility/dbconection');
 
-let vehicleMod = {};
+let vehicleModel = {};
 //what if user has two or more vehicles 
-vehicleMod.addVehicle = async (newVehicle) => {
+vehicleModel.addVehicle = async (newVehicle) => {
+    console.log("hello");
     let collection = await vehicleCollection.getVehicleModel();
+    
+    newVehicle.vehicleId = await vehicleModel.generateVehicleId();
     let insertVehicle = await collection.create(newVehicle);
+    console.log(insertVehicle);
     if(insertVehicle){
         return insertVehicle;
     }else{
@@ -14,7 +18,18 @@ vehicleMod.addVehicle = async (newVehicle) => {
     }
 };
 
-vehicleMod.getVehicleById = async (vehicleId) => {
+vehicleModel.generateVehicleId = async() => {
+    let vehicleModel = await vehicleCollection.getVehicleModel()
+    let ids = await vehicleModel.distinct("userId");
+    let uId = Math.max(...ids);
+    if(uId == -Infinity)return 1;
+    return uId + 1;  
+}
+
+
+
+//to find the car records
+vehicleModel.getVehicleById = async (vehicleId) => {
     let collection = await vehicleCollection.getVehicleModel();
     let findVehicle = await collection.find({vehicleId: vehicleId});
     if(findVehicle){
@@ -26,7 +41,7 @@ vehicleMod.getVehicleById = async (vehicleId) => {
     }
 };
 
-vehicelMod.getVehicleByUserID = async (UserID) => {
+vehicleModel.getVehicleByUserID = async (UserID) => {
     let collection = await vehicleCollection.getVehicleModel();
     let findVehicle = await collection.find({userId:UserID});
     if(findVehicle){
@@ -37,5 +52,4 @@ vehicelMod.getVehicleByUserID = async (UserID) => {
         return err;
     }
 };
-
-module.exports = vehicelMod;
+module.exports = vehicleModel;

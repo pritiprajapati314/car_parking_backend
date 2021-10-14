@@ -1,4 +1,5 @@
 let userCollection = require('../utility/dbconection');
+const { email } = require('../utility/schema/user');
 
 
 //Priti : below object will define carry all the function that to be used in the by the service along with 
@@ -12,9 +13,8 @@ let usermodel = {}
 //here userCollection gets connection required to proceed 
 usermodel.addUser = async (newUser) => {
     let userModel = await userCollection.getUserModel();
-    
+    newUser.userId = await usermodel.generateUserId();
     let insertedData = await userModel.create(newUser);
-    console.log(insertedData)
     if(insertedData){
         return insertedData;
     }else{
@@ -22,6 +22,14 @@ usermodel.addUser = async (newUser) => {
         err.status = 500;
         throw err;
     }
+}
+
+usermodel.generateUserId = async() => {
+    let userModel = await userCollection.getUserModel();
+    let ids = await userModel.distinct("userId");
+    let uId = Math.max(...ids);
+    if(uId == -Infinity)return 1;
+    return uId + 1;  
 }
 
 usermodel.getUserByUsername = async (username) => {
@@ -40,6 +48,27 @@ usermodel.getUserByEmail = async (email) => {
     let userModel = await userCollection.getUserModel();
     let data = await userModel.find({email: email});
     return data;
+}
+
+
+usermodel.updateUser = async (value) => {
+    let userModel = await userCollection.getUserModel();
+    let data = await userModel.updateOne({email:value.email}, {$set:{address : value.address, pin : value.pin, contact : value.contact}})
+    if(data){
+        return data;
+    }
+    else return Error;
+}
+
+usermodel.deleteUser = async (value) => {
+    let userModel = await userCollection.getUserModel();
+    let data = await userModel.deleteOne({email : value.email});
+    if(data){
+        return data;
+    }
+    else{
+        return Error;
+    }
 }
 
 module.exports = usermodel;

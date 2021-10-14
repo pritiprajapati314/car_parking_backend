@@ -4,7 +4,6 @@ let config = require('./config');
 loginUtil = {}
 
 loginUtil.verifyToken = (req, res, next) => {
-    // TODO: implement login to verify incoming token;
     let token; 
     try{
         token = req.headers["x-access-token"];
