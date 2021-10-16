@@ -9,15 +9,10 @@ let config = require('../utility/config');
 let ownerservice = {}
 
 
-//Priti: register
-//hashes the password
-//then send the new object (owner) to get stored in the database
-//and gets back the data it has stored in the database 
 ownerservice.registerOwner = async (newowner) => {
     
-    validation.validateNewUser(newowner);
+    await validation.validateNewOwner(newowner);
     newowner.password = await bcrypt.hash(newowner.password, 10);
-    console.log("what happend now");
     newowner = await ownermodel.addowner(newowner);
     return newowner
 }

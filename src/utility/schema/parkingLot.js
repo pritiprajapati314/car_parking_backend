@@ -17,10 +17,8 @@ let parkingLot = {
         required : true
     },
     "addressID" : {
-        type : String,
-        required : true
+        type : String
     }
-    //should i keep fees here or in parking slot
 }
 
 module.exports = parkingLot;

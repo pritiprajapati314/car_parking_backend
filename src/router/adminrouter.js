@@ -13,9 +13,7 @@ adminrouter.post('/owner-request', async (req, res, next) => {
         let newOwner = new Owner(req.body);
         let newParkingLot = new ParkingLot(req.body);
 
-
         newOwner = await ownerservice.registerOwner(newOwner);
-
         newParkingLot.ownerId = newOwner.ownerId;
         newParkingLot = await parkingLotService.addParkingLot(newParkingLot);
 

@@ -1,6 +1,6 @@
-class User{
+class Owner{
     constructor (body){
-        this.userId = body.userId;
+        this.ownerId = body.ownerId;
         this.vehicle = body.vehicle;
         this.email = body.email;
         this.password = body.password;
@@ -10,8 +10,9 @@ class User{
         this.gender = body.gender;
         this.contact = body.contact;
         this.address = body.address;
+        this.city = body.city;
         this.pin = body.pin;
     }
 }
 
-module.exports = User;
+module.exports = Owner;

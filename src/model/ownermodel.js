@@ -5,10 +5,9 @@ let ownermodel = {}
 
 ownermodel.addowner = async (newOwner) => {
     let ownerModel = await ownerCollection.getOwnerModel();
-
-    
+ 
     newOwner.ownerId = await ownermodel.generateId();
-    
+
     let insertedData = await ownerModel.create(newOwner);
     if(insertedData){
         return insertedData;
