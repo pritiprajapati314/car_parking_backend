@@ -1,32 +1,31 @@
 let owner = {
     "ownerId" : {
         type : String,
-        unique : true,
-        required : true
+        unique : true
+    },
+    "email" : {
+        type : String,
+        unique : true
     },
     "firstName" : {
         type : String, 
-        required : true
+ 
     },
     "lastName" : {
-        type : String, 
-        required : true
+        type : String
+
     }, 
     "dateOfBirth" : {
-        type : Date,
-        required : true
+        type : Date
     }, 
     "address" : {
-        type : String, 
-        required : true
+        type : String
     }, 
     "city" : {
-        type : String, 
-        required : true
+        type : String
     },
     "pin" : {
-        type : String, 
-        required : true
+        type : String
     }
 
 }

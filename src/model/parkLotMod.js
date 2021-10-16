@@ -7,17 +7,27 @@ let parkLotModel = {};
 parkLotModel.addParkLot = async (newParkLot) => {
     
     const connection = await parkLotCollection.getPLotModel();
-    
-    let insertedData = await connection.create(newParkLot);
+    newParkLot.parkingLotId = await parkLotModel.generateId();
 
+    let insertedData = await connection.create(newParkLot);
     for(let i = 1; i<= newParkLot.numberOFSlot; i++){
         let newParkingSlot = new parkingSlot(insertedData);
         newParkingSlot.slotId += '/' + i;
         newParkingSlot.status = false;
-        parkingSlotModel.addSlot(newParkingSlot);
+        await parkingSlotModel.addSlot(newParkingSlot);
     }
     
 };
+
+parkLotModel.generateId = async() => {
+
+    const connection = await parkLotCollection.getPLotModel();
+    let ids = await connection.distinct("parkingLotId");
+    let uId = Math.max(...ids);
+    if(uId == -Infinity)return 1;
+    console.log(uId);
+    return uId + 1;  
+}
 
 parkLotModel.getParkLotById = async (parkLotId) => {
     let parkLotModel = await ownerCollection.getPLotModel();

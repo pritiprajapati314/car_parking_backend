@@ -29,7 +29,7 @@ let user = {
         required: true
     },
     "vehicle":{
-        type: String
+        type: Array
     },
     "contact" : {
         type: String,

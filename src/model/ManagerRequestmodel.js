@@ -5,11 +5,11 @@ let ManagerRequestCollection = require('../utility/dbconection');
 let ManagerRequestmodel = {} 
 
 ManagerRequestmodel.addRequest = async (newRequest) => {
-   
+    //console.log("i am here to haunt you for forever");
     let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
-   
+    //console.log(ManagerRequestmodel);
     let insertedData = await ManagerRequestmodel.create(newRequest);
-    console.log(insertedData)
+    console.log("insertData", insertedData)
     if(insertedData){
         return insertedData;
     }else{
