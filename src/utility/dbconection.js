@@ -14,10 +14,9 @@ const managerRequest = require('./schema/ManagerRequest')
 //Priti : we have to declare a schema in the format of mongoose
 const schema = mongoose.Schema;
 
-//Priti : connection with database getting and getting the url for the database after connection
-//this will happend once for each time any service has been requested
-const URL = 'mongodb://localhost:27017/ParkingLotDB';
-//Priti : defining the attribute using the schema, collection for each database-collections
+
+const URL = 'mongodb://localhost:27017/CarParkingDB';
+
 let userschema = new schema(user, {collection: "CAR_PARKING_USER", timestamps: true});
 let ownerschema = new schema(owner, {collection: "CAR_PARKING_OWNER", timestamps: true});
 let vehicleschema = new schema(vehicle, {collection: "CAR_PARKING_VEH", timestamps: true});
@@ -25,14 +24,11 @@ let parkLotschema = new schema(parkingLot, {collection: "CAR_PARKING_PL", timest
 let parkSlotschema = new schema(parkingSlot, {collection: "CAR_PARKING_PS", timestamps: true});
 let slotTimeschema = new schema(slotTiming, {collection: "CAR_PARKING_ST", timestamps: true});
 let managerRequestschema = new schema(managerRequest,{collection:"CAR_PARKING_MR",timestamps: true})
-//Priti : this object contains all the function that is going to be later used in the 'model' 
-//to insert, update, find and other operations
+
 let connection = {}
 
 
-//Priti : here connection for each collection is declared
-//connection to url after parsing nad unifing to the already declared model 
-//collection name, schema(final)
+
 connection.getUserModel = async() => {
     try{
         
