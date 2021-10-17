@@ -19,9 +19,8 @@ ManagerRequestrouter.post('/save', async (req,res)=>{
 });
 ManagerRequestrouter.get('/requests',async(req,res)=>{
     try{
-        console.log("hello")
+       
         let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
-        console.log("got the model");
          let requests = await ManagerRequestmodel.find({});
          console.log(requests);
          res.status(200).json({"sending the request" :requests});

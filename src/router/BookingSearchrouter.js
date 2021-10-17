@@ -14,6 +14,8 @@ BookingSearchrouter.post('/search', async (req,res)=>{
         let newRequest = new BookingSearch(req.body);
         newRequest = await BookingSearchservice.addSearchRequest(newRequest);
         console.log("Request")
+        let cityName = req.query.area;
+        console.log(cityName);
         res.json("Request added");
     }
     catch(err)
@@ -37,9 +39,7 @@ BookingSearchrouter.get('/getrequests',async(req,res)=>{
 })
 BookingSearchrouter.get('/getCity',async(req,res)=>{
     try{
-        console.log("hello")
         let BookingSearchmodel = await BookingSearchCollection.getBookingSearchModel();
-        console.log("got the model");
          let cityName = await BookingSearchmodel.find({},{city:1,_id:0});
          console.log(cityName);
          res.status(200).json({"sending the request" :cityName});
