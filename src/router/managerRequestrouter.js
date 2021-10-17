@@ -24,7 +24,7 @@ ManagerRequestrouter.get('/requests',async(req,res)=>{
         console.log("got the model");
          let requests = await ManagerRequestmodel.find({});
          console.log(requests);
-         res.status(200).json({"sending the request" :requests});
+         res.status(200).json({"requests":requests});
     }
     catch(error){
         res.status(500).json(error);

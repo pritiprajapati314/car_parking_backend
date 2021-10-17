@@ -1,5 +1,4 @@
 let ManagerRequest = {
-    
     "firstName": {
         type: String,        
     },
@@ -8,59 +7,44 @@ let ManagerRequest = {
     },
     "email": {
         type: String,
-       required:true,
-        unique: true
     },
     "dateOfBirth": {
         type: String,
-        required:true
     },
     "aadhar":
     {
         type:String,
-        unique:true,
-        required:true
+        unique:true
     },
     "contact" : {
         type: Number,
-       required:true
     },
     "alternative" : {
         type: Number,
-       required:true
     },
     "residence":
     {
         type: String,
-       required:true
-
     },
     "address" : {
-        type: String,
-        required:true
+        type: String
     },
     "pin" : {
         type: String,
-       required:true
     },
   
     "city" : {
-        type: String,
-       required:true
+        type: String
     },
     "area" : {
-        type: String,
-       required:true
+        type: String
     },
     "slots":{
-        type: Number,
-        required:true
+        type: Number
     },
     "fees":
     {
-        type:Number,
-        required:true
-
+        type:Number
     }
 }
 
