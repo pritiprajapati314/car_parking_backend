@@ -6,9 +6,9 @@ let ManagerRequestmodel = {}
 
 ManagerRequestmodel.addRequest = async (newRequest) => {
     //console.log("i am here to haunt you for forever");
-    let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
-    //console.log(ManagerRequestmodel);
-    let insertedData = await ManagerRequestmodel.create(newRequest);
+    let ManagerRequestModel = await ManagerRequestCollection.getManagerRequestModel();
+    console.log(ManagerRequestModel, newRequest);
+    let insertedData = await ManagerRequestModel.create(newRequest);
     console.log("insertData", insertedData)
     if(insertedData){
         return insertedData;
@@ -20,7 +20,7 @@ ManagerRequestmodel.addRequest = async (newRequest) => {
 }
 ManagerRequestmodel.getRequests= async () => {
     console.log("hi");
-    let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestmodel();
+    let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
     let data = await ManagerRequestmodel.find({});
     return data;
 }

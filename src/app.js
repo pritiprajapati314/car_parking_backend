@@ -7,7 +7,7 @@ const managerrouter  = require('./router/managerRequestrouter')
 const errorLogger = require('./utility/errorlogger');
 const cors = require('cors');
 
-const PORT_NUM = 8080;
+const PORT_NUM = 3000;
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
