@@ -11,11 +11,11 @@ BookingSearchrouter.post('/search', async (req,res)=>{
     console.log(newRequest);
     try{
         console.log("hello");
+       
         let newRequest = new BookingSearch(req.body);
         newRequest = await BookingSearchservice.addSearchRequest(newRequest);
         console.log("Request")
-        let cityName = req.query.area;
-        console.log(cityName);
+      
         res.json("Request added");
     }
     catch(err)
@@ -26,9 +26,8 @@ BookingSearchrouter.post('/search', async (req,res)=>{
 });
 BookingSearchrouter.get('/getrequests',async(req,res)=>{
     try{
-        console.log("hello")
-        let BookingSearchmodel = await BookingSearchCollection.getBookingSearchModel();
-        console.log("got the model");
+    
+        let BookingSearchmodel = await BookingSearchCollection.getBookingSearchModel();    
          let requests = await BookingSearchmodel.find({});
          console.log(requests);
          res.status(200).json({"sending the request" :requests});
@@ -48,4 +47,22 @@ BookingSearchrouter.get('/getCity',async(req,res)=>{
         res.status(500).json(error);
     }
 })
+BookingSearchrouter.get('/getbyarea',async(req,res)=>{
+    try{
+          
+    }
+    catch(error){
+        res.status(500).json(error);
+    }
+})
 module.exports = BookingSearchrouter;
+
+// {
+//     "city": "Bhopal",
+//      "area": "New Market",
+//      "date": "20-08-2000",
+//      "pin": "123445",
+//      "startTime": "15:08",
+//      "endTime": "19:09"
+//    }
+   

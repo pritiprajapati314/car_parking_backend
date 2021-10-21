@@ -408,3 +408,53 @@ Sun Oct 17 2021 16:05:57 GMT+0530 (India Standard Time) : SyntaxError: Unexpecte
     at IncomingMessage.emit (events.js:327:22)
     at endReadableNT (_stream_readable.js:1220:12)
     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Mon Oct 18 2021 20:21:38 GMT+0530 (India Standard Time) : ReferenceError: email is not defined
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:40:53
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:47:12)
+Mon Oct 18 2021 20:22:47 GMT+0530 (India Standard Time) : ReferenceError: email is not defined
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:40:61
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:47:12)
+Mon Oct 18 2021 20:45:57 GMT+0530 (India Standard Time) : TypeError: ownermodel.find is not a function
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:41:40
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:47:12)
+Mon Oct 18 2021 20:48:21 GMT+0530 (India Standard Time) : TypeError: ownermodel.getownerByownerId is not a function
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:41:40
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\express\lib\router\index.js:47:12)
+Mon Oct 18 2021 20:48:47 GMT+0530 (India Standard Time) : TypeError: ownermodel.getownerByownerId is not a function
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:41:40
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Mon Oct 18 2021 20:54:49 GMT+0530 (India Standard Time) : TypeError: ownermodel.getownerByownerId is not a function
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:41:40
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)

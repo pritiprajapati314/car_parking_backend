@@ -4,8 +4,9 @@ let ownerCollection = require('../utility/dbconection');
 let ownermodel = {}
 
 ownermodel.addowner = async (newOwner) => {
+    console.log("hello")
     let ownerModel = await ownerCollection.getOwnerModel();
- 
+    console.log("got the model",ownerModel)
     newOwner.ownerId = await ownermodel.generateId();
 
     let insertedData = await ownerModel.create(newOwner);

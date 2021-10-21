@@ -6,18 +6,37 @@ let parkingLot = {
     },
     "ownerId" : {
         type : Number,
-        required : true
     },
-    "numberOFSlot" : {
-        type : Number,
-        required : true
+    "address" : {
+        type: String,
+        required:true
     },
-    "revenue" : {
-        type : Number,
-        required : true
+    "pin" : {
+        type: String,
+       required:true
     },
-    "addressID" : {
-        type : String
+  
+    "city" : {
+        type: String,
+       required:true
+    },
+    "area" : {
+        type: String,
+       required:true
+    },
+    "addressId":{
+        type: String,
+       
+    },
+    "slots":{
+        type: Number,
+        required:true
+    },
+    "fees":
+    {
+        type:Number,
+        required:true
+
     }
 }
 

@@ -3,31 +3,46 @@ let owner = {
         type : String,
         unique : true
     },
-    "email" : {
-        type : String,
-        unique : true
+    "firstName": {
+        type: String,        
     },
-    "firstName" : {
-        type : String, 
- 
+    "lastName": {
+        type: String
     },
-    "lastName" : {
-        type : String
+    "email": {
+        type: String,
+       required:true,
+        unique: true
+    },
+    "password":{
+       type:String,
+       required:true
+    },
+    "dateOfBirth": {
+        type: String,
+        required:true
+    },
+    "aadhar":
+    {
+        type:String,
+        unique:true,
+        required:true
+    },
+    "contact" : {
+        type: Number,
+       required:true
+    },
+    "alternative" : {
+        type: Number,
+       required:true
+    },
+    "residence":
+    {
+        type: String,
+       required:true
 
-    }, 
-    "dateOfBirth" : {
-        type : Date
-    }, 
-    "address" : {
-        type : String
-    }, 
-    "city" : {
-        type : String
     },
-    "pin" : {
-        type : String
-    }
-
+   
 }
 
 module.exports = owner;

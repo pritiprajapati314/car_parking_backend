@@ -5,18 +5,22 @@ let parkingSlotModel = require('./parkSlotMod');
 let parkLotModel = {};
 
 parkLotModel.addParkLot = async (newParkLot) => {
-    
+    console.log("hey")
     const connection = await parkLotCollection.getPLotModel();
     newParkLot.parkingLotId = await parkLotModel.generateId();
-
+    console.log("got teh id")
     let insertedData = await connection.create(newParkLot);
-    for(let i = 1; i<= newParkLot.numberOFSlot; i++){
+    for(let i = 1; i<= newParkLot.slots; i++){
+        console.log("hi")
         let newParkingSlot = new parkingSlot(insertedData);
+        console.log(newParkingSlot);
         newParkingSlot.slotId += '/' + i;
         newParkingSlot.status = false;
+        console.log( newParkingSlot.slotId)
         await parkingSlotModel.addSlot(newParkingSlot);
+        
     }
-    
+   console.log("loop over") 
 };
 
 parkLotModel.generateId = async() => {

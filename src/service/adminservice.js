@@ -12,7 +12,9 @@ let ownerservice = {}
 ownerservice.registerOwner = async (newowner) => {
     
     await validation.validateNewOwner(newowner);
+    console.log("validfation");
     newowner.password = await bcrypt.hash(newowner.password, 10);
+    console.log("hi ")
     newowner = await ownermodel.addowner(newowner);
     return newowner
 }
