@@ -4,7 +4,6 @@ let BookingSearchmodel = {}
 BookingSearchmodel.addRequest = async (newRequest) => {
     console.log("hi")
     let BookingSearchmodel = await BookingSearchCollection.getBookingSearchModel();
-   
     let insertedData = await BookingSearchmodel.create(newRequest);
     console.log(insertedData)
     if(insertedData){

@@ -35,15 +35,15 @@ adminrouter.delete('/deny',async(req,res)=>{
     
 })
 
-adminrouter.get('/view-manager',async (req,res,next)=>{
+adminrouter.get('/view-manager',async (req,res)=>{
     try{
        let ownermodel = await ownerCollection.getOwnerModel();
-       let managers = await ownermodel.find({},{email:1,_id:0});
+       let managers = await ownermodel.find({});
        console.log(managers);
-       res.status(200).json({"sending the request" :managers});
+       res.status(200).json({response:managers});
     }
-catch(err){
-    next(err);
+catch(error){
+    res.status(500).json(error);
 }
 })
 
@@ -53,17 +53,17 @@ adminrouter.get('/view-parking',async(req,res,next)=>{
         let parkingmodel = await  parkingCollection.getPLotModel();
         let parkingspace = await parkingmodel.find({});
         console.log(parkingspace);
-        res.status(200).json({"sending the request" :parkingspace});
+        res.status(200).json({response :parkingspace});
 
       }
       catch(err){
         next(err);
     }
 })
-// adminrouter.get('/view-parking/:parkingLotId',async (req,res)=>{
-//     let parkingLot = req.params.parkingLotId;
-//     console.log(parkingLot);
-// })
+adminrouter.get('/view-parking/:parkingLotId',async (req,res)=>{
+    let parkingLot = req.params.parkingLotId;
+    console.log(parkingLot);
+})
 
 module.exports = adminrouter;
 

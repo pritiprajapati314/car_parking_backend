@@ -35,6 +35,8 @@ ManagerRequestrouter.get('/requests/:id',async(req,res)=>{
         let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
         console.log("got the model")
          let requests = await ManagerRequestmodel.findById(req.params.id);
+         console.log("this is find by id")
+         console.log(req.params.id);
          console.log(requests);
          res.status(200).json({response:requests});
     }
@@ -43,3 +45,4 @@ ManagerRequestrouter.get('/requests/:id',async(req,res)=>{
     }
 })
 module.exports = ManagerRequestrouter;
+//http://localhost:3000/managerRequest/requests/61613cc01d6c1d82f3b50769
