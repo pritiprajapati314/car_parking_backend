@@ -5,6 +5,8 @@ const ownermodel = require("../model/ownermodel");
 let validation = {}
 
 validation.validateNewUser = async (newUser) =>{
+
+    console.log(newUser);
     let validationReport = {};
     let validationErrors = {};
 

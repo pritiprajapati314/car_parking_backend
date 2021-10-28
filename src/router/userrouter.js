@@ -27,7 +27,7 @@ userrouter.post('/register', async (req, res, next)=>{
     try{
         let newuser = new User(req.body);
         let newvehicle = new Vehicle(req.body);
-
+    
         newuser = await userservice.registerUser(newuser);
 
         newvehicle.userId = newuser.userId;

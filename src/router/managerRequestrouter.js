@@ -33,10 +33,10 @@ ManagerRequestrouter.get('/requests/:id',async(req,res)=>{
     try{
        
         let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
-        console.log("got the model")
-         let requests = await ManagerRequestmodel.findById(req.params.id);
-         console.log(requests);
-         res.status(200).json({response:requests});
+        console.log("got the model", req.params);
+        let requests = await ManagerRequestmodel.findById(req.params.id);
+        console.log(requests);
+        res.status(200).json({response:requests});
     }
     catch(error){
         res.status(500).json(error);
