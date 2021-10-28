@@ -16,7 +16,7 @@ const bookingSearch = require('./schema/BookingSearch');
 const schema = mongoose.Schema;
 
 
-const URL = 'mongodb://localhost:27017/CarParkingDB';
+const URL = 'mongodb://localhost:27017/ParkingLotDB';
 
 let userschema = new schema(user, {collection: "CAR_PARKING_USER", timestamps: true});
 let ownerschema = new schema(owner, {collection: "CAR_PARKING_OWNER", timestamps: true});

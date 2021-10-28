@@ -56,6 +56,20 @@ BookingSearchrouter.get('/getbyarea',async(req,res)=>{
         res.status(500).json(error);
     }
 })
+BookingSearchrouter.post('/search-parking',async(req,res)=>{
+    let userpattern = new RegExp("^"+req.body.area )
+    let parking =await parkingCollection.getPLotModel();
+    parking.find({area:{$regex:userpattern}}).
+    then(parking=>{
+        res.json({parking})
+    }).catch(err=>{
+            console.log(err)
+        })
+    })
+
+
+
+
 module.exports = BookingSearchrouter;
 
 /* {

@@ -458,3 +458,13 @@ Mon Oct 18 2021 20:48:47 GMT+0530 (India Standard Time) : TypeError: ownermodel.
 Mon Oct 18 2021 20:54:49 GMT+0530 (India Standard Time) : TypeError: ownermodel.getownerByownerId is not a function
     at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\src\router\adminrouter.js:41:40
     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Sun Oct 24 2021 18:05:01 GMT+0530 (India Standard Time) : SyntaxError: Unexpected token } in JSON at position 42
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\body-parser\lib\read.js:121:18
+    at invokeCallback (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\raw-body\index.js:224:16)
+    at done (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\raw-body\index.js:213:7)
+    at IncomingMessage.onEnd (C:\Users\kriti\Desktop\Minor Project\car_parking_backend\node_modules\raw-body\index.js:273:7)
+    at IncomingMessage.emit (events.js:327:22)
+    at endReadableNT (_stream_readable.js:1220:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
