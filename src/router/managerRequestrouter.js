@@ -44,5 +44,23 @@ ManagerRequestrouter.get('/requests/:id',async(req,res)=>{
         res.status(500).json(error);
     }
 })
+ManagerRequestrouter.delete('/requests/:id',async(req,res)=>{
+    let ManagerRequestmodel = await ManagerRequestCollection.getManagerRequestModel();
+    console.log("got the model")
+      await ManagerRequestmodel.findByIdAndDelete(req.params.id).then(request=>{
+          if(!request)
+          {
+              return res.status(404).send({
+                  message:"Id not found"
+              })
+          }
+          res.send({message:"deleted succesfully"})
+      }).catch(err=>
+      {
+         return res.status(404).send({
+             message:"reuest not found"
+         })
+      })
+})
 module.exports = ManagerRequestrouter;
 //http://localhost:3000/managerRequest/requests/61613cc01d6c1d82f3b50769
