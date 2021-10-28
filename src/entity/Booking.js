@@ -4,12 +4,10 @@ class Booking{
         this.city = body.city;
         this.area = body.area;
         this.date = body.date;
-        this.pin = body.pin;
+        this.userId = body.userId;
+        this.vehicleNumber = body.vehicleNumber;
         this.startTime = body.startTime;
         this.endTime = body.endTime;
-
-        // this.gender = body.gender;
-        
     }
 }
 

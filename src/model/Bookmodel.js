@@ -1,23 +1,12 @@
-let BookingSearchCollection = require('../utility/dbconection');
+let parkingLot = require('../utility/dbconection');
+let parkingSlotModel = require('./parkLotMod');
 let BookingSearchmodel = {} 
 
-BookingSearchmodel.addRequest = async (newRequest) => {
-    console.log("hi")
-    let BookingSearchmodel = await BookingSearchCollection.getBookingSearchModel();
-    let insertedData = await BookingSearchmodel.create(newRequest);
-    console.log(insertedData)
-    if(insertedData){
-        return insertedData;
-    }else{
-        let err = new Error("Error occured in adding user");
-        err.status = 500;
-        throw err;
-    }
-}
-BookingSearchmodel.getSearchRequests= async () => {
-    console.log("hi");
-    let BookingSearchmodel = await BookingSearchCollection.getBookingSearchmodel();
-    let data = await BookingSearchmodel.find({});
+
+BookingSearchmodel.bookingSlot= async () => {
+    //console.log("hi");
+    let connection = await parkingLot.getPLotModel();
+    let data = await connection.find({});
     return data;
 }
 

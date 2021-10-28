@@ -24,7 +24,8 @@ let vehicleschema = new schema(vehicle, {collection: "CAR_PARKING_VEH", timestam
 let parkLotschema = new schema(parkingLot, {collection: "CAR_PARKING_PL", timestamps: true});
 let parkSlotschema = new schema(parkingSlot, {collection: "CAR_PARKING_PS", timestamps: true});
 let slotTimeschema = new schema(slotTiming, {collection: "CAR_PARKING_ST", timestamps: true});
-let managerRequestschema = new schema(managerRequest,{collection:"CAR_PARKING_MR",timestamps: true})
+let managerRequestschema = new schema(managerRequest,{collection:"CAR_PARKING_MR",timestamps: true});
+let bookingschema = new schema(bookingSearch, {collection: "CAR_PARKING_BR", timestamps: true});
 let connection = {}
 
 
@@ -64,6 +65,7 @@ connection.getPLotModel = async() => {
 
 connection.getPSlotModel = async() => {
     try{
+        console.log("hello i am mister nobody");
         return (await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})).model("CAR_PARKING_PS", parkSlotschema);
     }catch(err){
         throw err;
@@ -86,7 +88,7 @@ connection.getManagerRequestModel = async() => {
 }
 connection.getBookingSearchModel = async() => {
     try{
-        return (await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})).model("CAR_PARKING_BR",bookingSearchschema);
+        return (await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})).model("CAR_PARKING_BR",bookingschema);
     }catch(err){
         throw err;
     }

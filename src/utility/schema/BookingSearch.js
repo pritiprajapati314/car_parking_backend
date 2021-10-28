@@ -13,9 +13,12 @@ let BookingSearch = {
         type:String,
         required:true
     },
-    "pin" : {
+    "userId" : {
         type: String,
        required:true
+    },
+    "vehicleNumber" : {
+        type: String,
     },
     "startTime":{
         type:String,

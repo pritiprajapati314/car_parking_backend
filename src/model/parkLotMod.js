@@ -1,22 +1,19 @@
 let parkLotCollection = require('../utility/dbconection');
 let parkingSlot = require('../entity/parkingSlot')
 let parkingSlotModel = require('./parkSlotMod');
+const { parkingLotId } = require('../utility/schema/parkingLot');
 
 let parkLotModel = {};
 
 parkLotModel.addParkLot = async (newParkLot) => {
-    console.log("hey")
     const connection = await parkLotCollection.getPLotModel();
     newParkLot.parkingLotId = await parkLotModel.generateId();
-    console.log("got teh id")
     let insertedData = await connection.create(newParkLot);
     for(let i = 1; i<= newParkLot.slots; i++){
-        console.log("hi")
         let newParkingSlot = new parkingSlot(insertedData);
         console.log(newParkingSlot);
         newParkingSlot.slotId += '/' + i;
         newParkingSlot.status = false;
-        console.log( newParkingSlot.slotId)
         await parkingSlotModel.addSlot(newParkingSlot);
         
     }
@@ -33,16 +30,22 @@ parkLotModel.generateId = async() => {
     return uId + 1;  
 }
 
-parkLotModel.getParkLotById = async (parkLotId) => {
-    let parkLotModel = await ownerCollection.getPLotModel();
-    let data = await ownerModel.find({ownername: ownername});
-    return data;
-
-
-};
+parkLotModel.findPLots = async (newRequest) => {
+    let connection = await parkLotCollection.getPLotModel();
+    let insertedData = await connection.find({city: newRequest.city, area: newRequest.area});
+    if(insertedData){
+        return insertedData;
+    }else{
+        let err = new Error("Error occured in adding user");
+        err.status = 500;
+        throw err;
+    }
+}
 
 parkLotModel.getAvailable = async (parkLotId) => {
-    //it will find available slot from parking slot
+    let connection = await parkLotCollection.getPLotModel();
+    let data = await connection.find({ownername: ownername});
+    return data;
 };
 
 module.exports = parkLotModel;

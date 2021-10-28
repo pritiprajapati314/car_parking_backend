@@ -18,11 +18,11 @@ let parkingLot = {
   
     "city" : {
         type: String,
-       required:true
+        required:true
     },
     "area" : {
         type: String,
-       required:true
+        required:true
     },
     "addressId":{
         type: String,
