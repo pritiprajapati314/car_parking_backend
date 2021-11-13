@@ -1,5 +1,6 @@
 const express = require('express');
 let BookingSearch = require('../entity/Booking');
+let BookingRequestCollection = require('../utility/dbconection');
 const BookingSearchrouter = express.Router();
 const BookingSearchservice = require('../service/BookingSearchservice');
 const { city } = require('../utility/schema/owner');
@@ -8,13 +9,25 @@ BookingSearchrouter.post('/search', async (req,res)=>{
     try{
         let newRequest = new BookingSearch(req.body);
         newRequest = await BookingSearchservice.searchPLots(newRequest);
-        res.json({"found ParkingLots": newRequest});
+        res.json({response: newRequest});
     }
     catch(err){
         res.json(500).json(err);
     }
 });
+BookingSearchrouter.get('/search-results',async(req,res)=>{
+    try{
+        let BookingRequestmodel = await BookingRequestCollection.getBookingSearchModel();
+        let requests = await BookingRequestmodel.find({});
+        console.log(requests);
+        res.status(200).json({response :requests});
+    }
+    catch(err)
+    {
+        res.json(500).json(err);
 
+    }
+})
 BookingSearchrouter.get('/bookSlot',async(req,res)=>{
     try{ 
         let bookSlot = await BookingSearchservice.bookSlot(req.body.parkingLotId);
@@ -56,16 +69,16 @@ BookingSearchrouter.get('/getbyarea',async(req,res)=>{
         res.status(500).json(error);
     }
 })
-BookingSearchrouter.post('/search-parking',async(req,res)=>{
-    let userpattern = new RegExp("^"+req.body.area )
-    let parking =await parkingCollection.getPLotModel();
-    parking.find({area:{$regex:userpattern}}).
-    then(parking=>{
-        res.json({parking})
-    }).catch(err=>{
-            console.log(err)
-        })
-    })
+// BookingSearchrouter.post('/search-parking',async(req,res)=>{
+//     let userpattern = new RegExp("^"+req.body.area )
+//     let parking =await parkingCollection.getPLotModel();
+//     parking.find({area:{$regex:userpattern}}).
+//     then(parking=>{
+//         res.json({parking})
+//     }).catch(err=>{
+//             console.log(err)
+//         })
+//     })
 
 
 

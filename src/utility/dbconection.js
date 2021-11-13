@@ -12,6 +12,7 @@ const parkingSlot = require('./schema/parkingSlot');
 const slotTiming = require('./schema/slotTiming');
 const managerRequest = require('./schema/ManagerRequest')
 const bookingSearch = require('./schema/BookingSearch');
+const admin = require('./schema/Admin');
 //Priti : we have to declare a schema in the format of mongoose
 const schema = mongoose.Schema;
 
@@ -26,6 +27,7 @@ let parkSlotschema = new schema(parkingSlot, {collection: "CAR_PARKING_PS", time
 let slotTimeschema = new schema(slotTiming, {collection: "CAR_PARKING_ST", timestamps: true});
 let managerRequestschema = new schema(managerRequest,{collection:"CAR_PARKING_MR",timestamps: true});
 let bookingschema = new schema(bookingSearch, {collection: "CAR_PARKING_BR", timestamps: true});
+let adminschema = new schema(admin, {collection: "CAR_PARKING_AD", timestamps: true});
 let connection = {}
 
 
@@ -93,5 +95,13 @@ connection.getBookingSearchModel = async() => {
         throw err;
     }
 }
+connection.getAdminModel = async() => {
+    try{
+        return (await mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})).model("CAR_PARKING_AD",adminschema);
+    }catch(err){
+        throw err;
+    }
+}
+
 module.exports =  managerRequestschema;
 module.exports = connection;
